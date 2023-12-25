@@ -1,0 +1,19 @@
+Aplikacija je kreirana za usporedbu Materilized view i Facts tablea query throughputa.
+Aplikacija koristi Flask web framework te je mozemo pokretati na dva nacina.
+1. nacin pokretanja je pokretanjem python aplikacije u fileu app.py, 
+nakon sto se aplikacija pokrene benchmarkamo je putem apache benchmarka naredbama 
+ab -n 10000 -c 5 http://127.0.0.1:5000/query_materialized_view 
+za dobivanje benchmarka materialized viewa te
+ab -n 10000 -c 5 http://127.0.0.1:5000/query_facts_table
+za dobivanje benchmarka facts tablea
+
+2. nacin pokretanja je u dockeru. Docker mozemo pokrenuti koristeci naredbu:
+docker-compose up --build 
+te nakon sto se docker pokrene koristit cemo naradbe
+ab -n 10000 -c 5 http://127.0.0.1:5000/query_materialized_view 
+za dobivanje benchmarka materialized viewa te
+ab -n 10000 -c 5 http://127.0.0.1:5000/query_facts_table
+za dobivanje benchmarka facts tablea   
+Kada zavrsimo sa benchmarkanjem aplikacije koristit cemo naredbu: 
+docker-compose down
+kako bi zatvorili docker    
